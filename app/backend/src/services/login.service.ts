@@ -10,14 +10,12 @@ class LoginService {
     if (!user) return { type: 401, response: { message: 'Incorrect email or password' } };
 
     const encryptedPassword = Bcrypt.compareSync(password, user?.password);
-    console.log(encryptedPassword);
-    console.log(user.password);
 
     if (!encryptedPassword) {
       return { type: 401, response: { message: 'Incorrect email or password' } };
     }
 
-    return { type: 200, response: { token: this.jwt.createToken({ email, password }) } };
+    return { type: 200, response: { token: this.jwt.createToken({ email }) } };
   };
 }
 

@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
+import ValidateLoginService from '../services/loginValidate.service';
 
 export default class validateLoginController {
   validateLoginControllerTwo = async (req: Request, res: Response) => {
-    const { authorization } = req.headers;
-    if (!authorization) {
-      return res.status(400).json({ message: 'Invalid token' });
-    }
-    return res.status(200).json({ role: 'admin' });
+    const role = await this.serviceInstance.loginServiceTwo(res.locals.user.email);
+    return res.status(200).json({ role });
   };
+
+  serviceInstance = new ValidateLoginService();
 }
