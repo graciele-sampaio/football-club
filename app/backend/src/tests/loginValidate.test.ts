@@ -18,7 +18,7 @@ it('sem token retorna erro', async() => {
 });
 
 it('enviando token válido retorna o tipo do usuário', async() => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjczNTQ3MTA1LCJleHAiOjE2NzQzMjQ3MDV9.KLENOem4xWVcrV8xPzRF7uM7iy33wLadzpsBKlWwtTg"
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTY3MzYzMDA3MCwiZXhwIjoxNjc0NDA3NjcwfQ.ZrXaGFHOyV_yZ66VKjmLsJFgYkWBcA35WNdh8E0wrg8"
   const response = await chai.request(app).get('/login/validate').set('authorization', token);
 
   expect(response.status).to.be.equal(200);
