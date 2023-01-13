@@ -6,10 +6,10 @@ class TeamService {
     return { type: 200, message: allTeams };
   };
 
-  getIdTeams = async (id: string | number) => {
-    const teamsById = await TeamModel.findOne({ where: { id } });
-    if (teamsById) return { type: 200, message: teamsById };
-    return { type: 400, message: 'Id not found' };
+  getIdTeams = async (id: number) => {
+    const teamsById : TeamModel | null = await TeamModel.findOne({ where: { id } });
+    if (!teamsById) return { type: 404, response: { message: 'Id not found' } };
+    return { type: 200, response: teamsById };
   };
 }
 

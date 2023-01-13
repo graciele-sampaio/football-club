@@ -10,8 +10,8 @@ class TeamController {
 
   getIdTeams = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { message } = await this.newService.getIdTeams(id);
-    return res.status(200).json(message);
+    const { type, response } = await this.newService.getIdTeams(Number(id));
+    return res.status(type).json(response);
   };
 }
 

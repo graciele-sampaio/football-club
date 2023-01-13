@@ -32,7 +32,7 @@ it('enviando id válido retorna o time', async() => {
 
     const response = await chai.request(app).get('/teams/100');
   
-    expect(response.status).to.be.equal(400);
-    expect(response.body).to.be.deep.equal({ message: 'Id not found!'});
+    expect(response.status).to.be.equal(404);
+    expect(response.body).to.be.deep.equal({ message: 'Id not found'});
     });
 })
