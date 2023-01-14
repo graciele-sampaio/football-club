@@ -22,6 +22,19 @@ class MatchesController {
     const createMatches = await this.newService.insertMatchesInProgress(req.body);
     return res.status(201).json(createMatches);
   };
+
+  updateMatchesInProgress = async (req: Request, res: Response) => {
+    const updateMatch = await this.newService.updateMatchesInProgress(Number(req.params.id));
+    return res.status(200).json({ updateMatch });
+  };
+
+  updateTeamGoalsMatches = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const updateMatch = await this.newService
+      .updateTeamGoalsMatches(id, homeTeamGoals, awayTeamGoals);
+    return res.status(200).json({ updateMatch });
+  };
 }
 
 export default MatchesController;

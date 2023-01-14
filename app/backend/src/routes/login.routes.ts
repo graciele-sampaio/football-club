@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import validateDataLogin from '../middlewares/login.middleware';
+import validateDataLogin from '../middlewares/validateLogin.middleware';
 import LoginController from '../controllers/login.controller';
 import ValidateLoginController from '../controllers/loginValidate.controller';
-import validateJwt from '../middlewares/jwt.middleware';
+import validateJwt from '../middlewares/validateJwt.middleware';
 
 const loginRoute = Router();
 

@@ -11,6 +11,11 @@ class TeamService {
     if (!teamsById) return { type: 404, response: { message: 'Id not found' } };
     return { type: 200, response: teamsById };
   };
+
+  getIdFormIddleware = async (id: number) => {
+    const teamsById : TeamModel | null = await TeamModel.findOne({ where: { id } });
+    return teamsById;
+  };
 }
 
 export default TeamService;

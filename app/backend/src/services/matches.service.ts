@@ -46,6 +46,22 @@ class MatchesService {
     });
     return insertMatch;
   };
+
+  updateMatchesInProgress = async (id: number) => {
+    const updateMatch = await MatchesModel.update({ inProgress: false }, { where: { id },
+    });
+    if (updateMatch) return { type: 200, message: 'Finished' };
+    return { type: 404, message: 'Id not found' };
+  };
+
+  updateTeamGoalsMatches = async (id: number, homeTeamGoals: number, awayTeamGoals: number) => {
+    const updateMatch = await MatchesModel.update({
+      homeTeamGoals, awayTeamGoals,
+    }, { where: { id },
+    });
+    if (updateMatch) return { type: 200, message: 'Updated' };
+    return { type: 400, message: 'Id not found or match it not in progress' };
+  };
 }
 
 export default MatchesService;
