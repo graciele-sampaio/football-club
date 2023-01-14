@@ -17,6 +17,11 @@ class MatchesController {
     if (req.query.inProgress) return this.matchesInProgress(req, res);
     this.getAllMatches(req, res);
   };
+
+  insertMatchesInProgress = async (req: Request, res: Response) => {
+    const createMatches = await this.newService.insertMatchesInProgress(req.body);
+    return res.status(201).json(createMatches);
+  };
 }
 
 export default MatchesController;
